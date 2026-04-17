@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Student Info</title>
+</head>
+
+
+<body>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+	<form class="w-50 p-4 border rounded bg-light" action="#" 
+	  th:action="@{/student-save}" th:object="${student}" method="post">
+	    <h3 class="text-center">Student Profile</h3><br/>
+	    
+	    <input type="text" class="form-control form-control-lg" th:field="*{fullname}" placeholder="Full Name"><br/>
+	    <input type="number" class="form-control form-control-lg" th:field="*{AM}" placeholder="AM"><br/>
+	    <input type="number" class="form-control form-control-lg" th:field="*{avgGrade}" placeholder="Average Grade"><br/>
+	    <input type="text" class="form-control form-control-lg" th:field="*{preferredLocation}" placeholder="Location"><br/>
+	    
+	    <label>Skills:</label><br>
+	    <div class="form-check" th:each="skill : ${skills}">
+	        <input class="form-check-input" type="checkbox"
+	               th:value="${skill}" th:field="*{skills}" th:id="${skill}" />
+	        <label class="form-check-label" th:for="${skill}" th:text="${skill}"></label>
+	    </div>
+		<br/>
+	    <label>Interests:</label><br>
+	    <div class="form-check" th:each="interest : ${interests}">
+	        <input class="form-check-input" type="checkbox"
+	               th:value="${interest}" th:field="*{interests}" th:id="${interest}" />
+	        <label class="form-check-label" th:for="${interest}" th:text="${interest}"></label>
+	    </div>
+	    <br/>
+	    <button type="submit" class="btn btn-info btn-lg btn-block">Save</button> 
+
+	</form>
+	<hr> 
+	<a th:href="@{/}" class="btn btn-primary btn-sm mb-3"> Homepage</a>
+</div>
+</body>
+</html>

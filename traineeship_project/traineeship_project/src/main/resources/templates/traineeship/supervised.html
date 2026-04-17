@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Supervised Traineeships</title>
+</head>
+
+
+<body>
+
+<div class="container">
+<br/>
+<h3>Supervised Traineeships</h3>
+<br/>
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th></th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr th:each="traineeship : ${traineeships}">
+		
+			<td th:text="${traineeship.title}" />	
+			<td th:text="${traineeship.description}" />
+			<td>
+				<a th:href="@{/supervised-traineeships(id=${traineeship.id})}" class="btn btn-primary btn-sm">More Info</a>
+				<a th:href="@{/supervised-traineeships/evaluation(id=${traineeship.id})}" class="btn btn-primary btn-sm">Evaluation</a>
+			</td>
+			
+			
+		</tr>
+	</tbody>		
+</table>
+<hr> 
+<a th:href="@{/}" class="btn btn-primary btn-sm mb-3"> Homepage</a>
+</div>
+
+</body>

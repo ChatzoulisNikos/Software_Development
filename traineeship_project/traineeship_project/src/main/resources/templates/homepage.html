@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Homepage</title>
+</head>
+
+
+<body>
+<div class="container">
+	<br><br>
+ 	<h2>Welcome to Traineeship Project</h2>
+   
+	<hr> <br>
+ 	
+	<div sec:authorize="hasRole('ROLE_ANONYMOUS')">
+		<p>
+	   		<a th:href="@{/login}" class="btn btn-primary btn-sm mb-3" th:text="Login"></a>
+	   		<a th:href="@{/register}" class="btn btn-primary btn-sm mb-3" th:text="Register"></a>
+		</p>
+	</div>	 
+
+  	<div sec:authorize="isAuthenticated()">
+    	<h4>Logged as: <span sec:authentication="name"></span></h4>
+    	<h4>Has role: <span sec:authentication="authorities"></span></h4>
+    	
+    	<br><hr> 
+    	
+	    <p sec:authorize="hasAuthority('STUDENT')">
+	    	<a th:href="@{/student-info}" class="btn btn-primary btn-sm mb-3"> Student Profile</a>
+	    	<a th:href="@{/apply-for-position}" onclick="return confirm('Are you sure you want to apply for this position?');"
+			   class="btn btn-primary btn-sm mb-3"> Apply for Position </a>
+	    	<a th:href="@{/fill-logbook}" class="btn btn-primary btn-sm mb-3">Fill the Logbook</a>
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3"> Logout</a>
+	    </p>
+	    
+	    <p sec:authorize="hasAuthority('COMPANY')">
+	    	<a th:href="@{/company-info}" class="btn btn-primary btn-sm mb-3"> Company Profile</a>
+	    	<a th:href="@{/available-traineeships}" class="btn btn-primary btn-sm mb-3"> Advertised Traineeships</a>
+	    	<a th:href="@{/assigned-traineeships}" class="btn btn-primary btn-sm mb-3"> Assigned Traineeships</a>
+	    	<a th:href="@{/announce-traineeship}" class="btn btn-primary btn-sm mb-3"> Announce Traineeship</a>
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3"> Logout</a>
+	    </p>
+	    
+	    <p sec:authorize="hasAuthority('PROFESSOR')">
+	    	<a th:href="@{/professor-info}" class="btn btn-primary btn-sm mb-3"> Professor Profile</a>
+	    	<a th:href="@{/supervised-traineeships}" class="btn btn-primary btn-sm mb-3"> Supervised Traineeships</a>
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3"> Logout</a>		
+	    </p>
+	    
+	    <p sec:authorize="hasAuthority('CMEMBER')">
+	    	<a th:href="@{/applied-users}" class="btn btn-primary btn-sm mb-3"> Applied Users</a>
+	    	<a th:href="@{/in-progress-traineeships}" class="btn btn-primary btn-sm mb-3"> In Progress Traineeships</a>
+	    	<a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3"> Logout</a>		
+	    </p>
+    
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Company Info</title>
+</head>
+
+
+<body>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+	<form class="w-50 p-4 border rounded bg-light" action="#" 
+	  th:action="@{/company-save}" th:object="${company}" method="post">
+		<h3 class="text-center">Company Profile</h3><br/>
+	    
+	    <input type="text" class="form-control form-control-lg" th:field="*{companyName}" placeholder="Company's Name"><br/>
+	    <input type="text" class="form-control form-control-lg" th:field="*{location}" placeholder="Location"><br/>
+	    
+	    <br/>
+	    <button type="submit" class="btn btn-info btn-lg btn-block">Save</button> 
+
+	</form>
+</div>
+</body>
+</html>

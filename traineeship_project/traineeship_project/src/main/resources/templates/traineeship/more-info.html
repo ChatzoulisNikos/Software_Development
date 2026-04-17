@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Traineeship Info</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<br/>
+<div class="container">
+    <h3>Traineeship Info</h3><br/>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${traineeship.title}">Traineeship Title</h5>
+
+            <p class="card-text">
+                <strong>Description:</strong>
+                <span th:text="${traineeship.description}">Sample description</span>
+            </p>
+
+            <p class="card-text">
+                <strong>Start Date:</strong>
+                <span th:text="${traineeship.fromDate}">2025-04-01</span>
+            </p>
+
+            <p class="card-text">
+                <strong>End Date:</strong>
+                <span th:text="${traineeship.toDate}">2025-07-01</span>
+            </p>
+
+            <p class="card-text">
+                <strong>Topics:</strong>
+                <span th:text="${traineeship.topics}">Java, Spring</span>
+            </p>
+
+            <p class="card-text">
+                <strong>Skills:</strong>
+                <span th:text="${traineeship.skills}">Problem Solving, Teamwork</span>
+            </p>
+            
+            <a th:href="@{${link}}" class="btn btn-primary">Back</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+</body>
+</html>

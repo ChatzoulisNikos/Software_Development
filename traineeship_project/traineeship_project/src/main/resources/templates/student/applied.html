@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Applied Students</title>
+</head>
+
+
+<body>
+
+<div class="container">
+<br/>
+<h3>Applied Students</h3>
+<br/>
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>Username</th>
+			<th>Full Name</th>
+			<th>AM</th>
+			<th>Average Grade</th>
+			<th>Pref. Location</th>
+			<th>Interests</th>
+			<th>Skills</th>
+			<th></th>
+			<th>Search</th>
+			<th></th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr th:each="user : ${users}" th:if="${user.assignedPosition == null}">
+			
+			<td th:text="${user.username}" />
+			<td th:text="${user.fullname}" />	
+			<td th:text="${user.AM}" />
+			<td th:text="${user.avgGrade}" />
+			<td th:text="${user.preferredLocation}" />
+			<td>
+				<span th:each="interest : ${user.interests.split(',')}">
+				    <p th:text="${interest}"></p>
+				</span>
+			</td>
+			<td>
+				<span th:each="skill : ${user.skills.split(',')}">
+				    <p th:text="${skill}"></p>
+				</span>
+			</td>
+			<td>
+				<a th:href="@{/applied-users(id=${user.id}, strategy=topicsSearch)}" class="btn btn-primary btn-sm">Topics</a>
+			</td>
+			<td>
+				<a th:href="@{/applied-users(id=${user.id}, strategy=locationSearch)}" class="btn btn-primary btn-sm">Location</a>
+			</td>
+			<td>
+				<a th:href="@{/applied-users(id=${user.id}, strategy='location&topics')}" class="btn btn-primary btn-sm">Topics & Location</a>
+			</td>
+			
+			
+			
+		</tr>
+	</tbody>		
+</table>
+
+<hr> 
+<a th:href="@{/}" class="btn btn-primary btn-sm mb-3"> Homepage</a>
+</div>
+
+</body>

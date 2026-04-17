@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Assigned Traineeships</title>
+</head>
+
+
+<body>
+
+<div class="container">
+<h3>Assigned Traineeships</h3>
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th></th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr th:each="traineeship : ${traineeships}">
+		
+			<td th:text="${traineeship.title}" />	
+			<td th:text="${traineeship.description}" />	
+			<td>
+				
+				<!-- Add "delete" button/link -->	
+				<a th:href="@{/delete-traineeship(traineeshipId=${traineeship.id})}"
+				   class="btn btn-danger btn-sm" 
+				   onclick="if (!(confirm('Are you sure you want to delete this traineeship?'))) return false">	Delete
+				</a>
+				<a th:href="@{/assigned-traineeships(id=${traineeship.id})}" class="btn btn-primary btn-sm">More Info</a>
+				<a th:href="@{/assigned-traineeships/evaluation(id=${traineeship.id})}" class="btn btn-info btn-sm">Evaluation</a>
+				
+			</td>
+			
+			
+		</tr>
+	</tbody>		
+</table>
+<hr> 
+<a th:href="@{/}" class="btn btn-primary btn-sm mb-3"> Homepage</a>
+</div>
+
+</body>

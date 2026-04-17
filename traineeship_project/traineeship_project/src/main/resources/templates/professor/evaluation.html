@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Professor Evaluation</title>
+</head>
+
+
+<body>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+  <form class="w-50 p-4 border rounded bg-light" action="#" th:action="@{/save-professor-evaluation}" th:object="${evaluation}" method="post">
+	    
+	    <h3 class="text-center">Professor Evaluation</h3><br/>
+	    <input type="number" hidden th:field="*{id}">
+	    <input hidden th:field="*{position}">
+	    <label>Motivation:</label>
+		<input type="range" th:field="*{motivation}" min="1" max="5" value="3" class="form-control form-control-lg">
+
+		<label>Effectiveness:</label>
+		<input type="range" th:field="*{effectiveness}" min="1" max="5" value="3" class="form-control form-control-lg">
+		
+		<label>Efficiency:</label>
+		<input type="range" th:field="*{efficiency}" min="1" max="5" value="3" class="form-control form-control-lg">
+
+	    <label>Facilities:</label>
+		<input type="range" th:field="*{facilities}" min="1" max="5" value="3" class="form-control form-control-lg">
+		
+		<label>Guidance:</label>
+		<input type="range" th:field="*{guidance}" min="1" max="5" value="3" class="form-control form-control-lg">
+	    
+	    <br/>
+	    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button> 
+	</form>
+</div>
+</body>
+</html>
